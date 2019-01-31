@@ -3,8 +3,6 @@
 # CREATE A HOTEL BOOKING FORM 
 ## **You need to create a hotel booking form, using HTML, CSS, PHP, MySQL, and a little bit of JS.
 
- 
-
 **The form must have frontend validation using HTML and PHP, and should contain the following:
 
 *First name: [required]
@@ -24,3 +22,12 @@ Total: R1050.00
 
 *Eg
 Hello [name]. Our records show that you have already made this booking.
+
+##Tools to be used:
+
+* **HTML
+* **CSS
+* **PHP
+* **MySQL
+* **A bit of JS
+* **Bootstrap / Bulma
