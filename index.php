@@ -3,7 +3,7 @@
 include_once 'connect.php';
 
 // query to create table
-$sql = "CREATE TABLE film (
+$sql = "CREATE TABLE hotel (
     id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(64) NOT NULL,
     director VARCHAR(64) NOT NULL,
