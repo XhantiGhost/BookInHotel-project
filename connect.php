@@ -8,4 +8,5 @@
     if ($db_server->connect_error) {
         echo "Failed to connect: " . $db_server->connect_error;
     } 
+
 ?>
