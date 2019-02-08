@@ -3,5 +3,5 @@
     define('DB_Host', 'localhost');
     define('DB_User', 'root');
     define('DB_Pass', '');
-    define('DB_Name', 'db_hotelB');
+    define('DB_Name', 'hotelB');
 ?>
