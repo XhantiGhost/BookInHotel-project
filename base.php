@@ -1,5 +1,6 @@
 
 <?php
+require_once 'index.php'
 
 $sql = "CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

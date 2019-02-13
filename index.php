@@ -2,6 +2,8 @@
 //connect to database
 include_once 'connect.php';
 
+session_start();
+
 // query to create table
 $sql = "CREATE TABLE login (
      id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
