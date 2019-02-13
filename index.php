@@ -4,12 +4,22 @@ include_once 'connect.php';
 
 session_start();
 
-// query to create table
-$sql = "CREATE TABLE login (
-     id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(64) NOT NULL,
-     director VARCHAR(64) NOT NULL,
-    year INT(4)";
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if(isset($_POST['login'])) {
+		require 'login.php';
+	}
+
+	elseif (isset($_POST['register'])) {
+		require 'register.php';
+	}
+}
+
+// // query to create table
+// $sql = "CREATE TABLE login (
+//      id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+//     title VARCHAR(64) NOT NULL,
+//      director VARCHAR(64) NOT NULL,
+//     year INT(4)";
 
 // accept link to the database and the query to create the table
     // if(mysqli_query($conn, $sql)) {
