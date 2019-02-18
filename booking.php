@@ -1,20 +1,13 @@
+<?php
+$sql = "CREATE TABLE IF NOT EXISTS roomdetail (
+  id int(11)  NOT NULL AUTO_INCREMENT,
+  username varchar(50) NOT NULL,
+  checkin_date date NOT NULL,
+  checkout_date date NOT NULL,
+  room_type varchar(50) NOT NULL,
+  no_of_room varchar(50) NOT NULL,
+  amount varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ";
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="index.php">
-        <input type="text" class=""><br>
-        Check In Date:<br>
-        <input type="text" class=""><br>
-        Check Out Date:<br>
-        <input type="submit" value="submit">
-        
-
-</body>
-</html>
+?>

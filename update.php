@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
 <?php
-include('connect.php');
+include('../include/db_con.php');
 session_start();
 if(isset($_POST['sub']))
 {
@@ -29,46 +19,56 @@ if($checkcount>=10)
 ?> <script>alert("Sorry Rooms Are not Available :( please try another Option !!");</script>
 <?php }
 else{
-$s1="INSERT INTO roomdetail (username,checkin_date,checkout_date,room_type,no_of_room,amount)VALUES('".$username."','".$startdate."','".$enddate."','".$roomtype."','".$room_nos."','".$amount."')";
+$s1="UPDATE roomdetail set username='".$username."',checkin_date='".$startdate."',checkout_date='".$enddate."',room_type='".$roomtype."',no_of_room='".$room_nos."',amount='".$amount."' where id='".$id."'";
 mysql_query($s1) or die (mysql_error($con));
 header("location:success.php");
 }
 }
 ?>
-    
-<div id="r">
-	<form action="registration.php" method="POST">
+
+<div id="contenar">
+<?php
+if(isset($_GET['id']))
+{
+$id=$_GET['id'];
+$getdata= "select * from roomdetail where id='".$id."' ";
+$check1=mysql_query($getdata) or die (mysql_error($con));
+$room=mysql_fetch_array($check1);
+}
+?>
+	<div id="r">
+	<form action="update.php" method="POST">
 	<h2 align="center" id="h"><u><i>Book Room</i></u></h2>
-	<h3> Welcome <?php session_start(); if(isset($_SESSION['username'])){ echo $_SESSION['username']; } ?> !!!</h3>
+	<h3> Welcome <?php session_start(); if(isset($_SESSION['username'])){ echo $_SESSION['username']; } if(isset($_GET['id'])){ echo $room['username']; }  ?> !!!</h3>
         <table >
 		
           <tr>
             <td width="113">Check in Date</td>
             <td width="215">
-              <input name="startdate1" type="date"  value="<?php if(isset($_POST['startdate1']))
-              { echo $_POST['startdate1']; }?>" /></td>
+			<?php if(isset($_GET['id'])){ ?>
+			 <input name="id" type="hidden"  value="<?php if(isset($_GET['id'])){ echo $_GET['id']; }  ?>" /> <?php } ?>
+              <input name="startdate1" type="date"  value="<?php if(isset($_POST['startdate1'])){ echo $_POST['startdate1']; } if(isset($_GET['id'])){ echo $room['checkin_date']; }  ?>" /></td>
           </tr>
           <tr>
             <td>Check out Date</td>
             <td>
-              <input name="enddate1" type="date" value="<?php if(isset($_POST['enddate1']))
-              { echo $_POST['enddate1']; }?>" onchange='this.form.submit()' /></td>
+              <input name="enddate1" type="date" value="<?php if(isset($_POST['enddate1'])){ echo $_POST['enddate1']; }if(isset($_GET['id'])){ echo $room['checkout_date']; }  ?> " onchange='this.form.submit()' /></td>
           </tr>
 			
        </table>
 		</form>
-		<form action="registration.php" method="POST">
+		<form action="update.php" method="POST">
         <table >
 		
           <tr>
             <td width="113"></td>
             <td width="215">
-              <input name="startdate" type="hidden" value=" <?php if(isset($_POST['startdate1'])){ echo $_POST['startdate1']; }?> " /></td>
+              <input name="startdate" type="hidden" value=" <?php if(isset($_POST['startdate1'])){ echo $_POST['startdate1'];  } if(isset($_GET['id'])){ echo $room['checkin_date']; }?> " /></td>
           </tr>
           <tr>
             <td></td>
-            <td><input name="username" type="hidden" value="<?php session_start(); if(isset($_SESSION['username'])){ echo $_SESSION['username']; } ?>"  />
-              <input name="enddate" type="hidden" value=" <?php if(isset($_POST['enddate1'])){ echo $_POST['enddate1']; }?> "  /></td>
+            <td><input name="username" type="hidden" value="<?php session_start(); if(isset($_SESSION['username'])){ echo $_SESSION['username']; } if(isset($_GET['id'])){ echo $room['username']; }  ?>"  />
+              <input name="enddate" type="hidden" value=" <?php if(isset($_POST['enddate1'])){ echo $_POST['enddate1']; } if(isset($_GET['id'])){ echo $room['checkout_date']; }?> "  /></td>
           </tr>
 		  <tr>
             <td>Room Type </td>
@@ -157,6 +157,3 @@ notEmpty()
  
 		
 	</div>
-
-</body>
-</html>

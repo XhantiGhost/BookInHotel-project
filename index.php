@@ -1,25 +1,12 @@
 <?php
-//connect to database
-include_once 'connect.php';
-
 session_start();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-	if(isset($_POST['login'])) {
-		require 'login.php';
-	}
+?>
+<?php
+//connect to database
+// include_once 'connect.php';
 
-	elseif (isset($_POST['register'])) {
-		require 'register.php';
-	}
-}
 
-// // query to create table
-// $sql = "CREATE TABLE login (
-//      id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//     title VARCHAR(64) NOT NULL,
-//      director VARCHAR(64) NOT NULL,
-//     year INT(4)";
 
 // accept link to the database and the query to create the table
     // if(mysqli_query($conn, $sql)) {
@@ -30,9 +17,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // }
 
     //delete the table manually for testing purposes eg. DROP table publications.film;
-    ?>
 
-
+?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -48,65 +34,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===================================================================================================-->
 
-        <title>Document</title>
-    </head>
-    <body>
-    <div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w">
-					<span class="login100-form-title p-b-32">
-						Account Login
-					</span>
+       <body>
+	   <div>
+	   <?php
+	  if (isset($_SESSION['userId']) ) {
+		echo '<form action="logout.inc.php" method="post">
+		<button type="submit" name="logout-submit">Logout</button>	 ';
+	  }
+	  else {
+		  echo ' <form action= "login.inc.php" method="post">
+		  <input type="text" name="username" placeholder="Username">
+		  <input type="password" name="password" placeholder="Password">
+		  <button type="submit" name="login-submit">Login</button>
+		  </form>
+			 <a class="signup" href="signup.php">Signup</a>';
+	  }
 
-					<span class="txt1 p-b-11">
-						Username
-					</span>
-					<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" >
-						<span class="focus-input100"></span>
-					</div>
-					
-					<span class="txt1 p-b-11">
-						Password
-					</span>
-					<div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-						<input class="input100" type="password" name="pass" >
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="flex-sb-m w-full p-b-48">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
+	  ?>
+	  
+	   
+	   </div>
+	  <?php
+	  if (isset($_SESSION['userId']) ) {
+		echo '<p class="login-status"> You are logged in!</p>';
+	  }
+	  else {
+		  echo '<p class="login-status"> You are logged out!</p>';
+	  }
 
-						<div>
-							<a href="#" class="txt3">
-								Forgot Password?
-							</a>
-						</div>
-					</div>
+	  ?>
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-				</form>
-			</div>
-		</div>
-	</div>
-	
-
-	<div id="dropDownSelect1"></div>
-	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
