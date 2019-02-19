@@ -1,5 +1,5 @@
 <?php
-include('../include/db_con.php');
+include('connect.php');
 session_start();
 if(isset($_POST['sub']))
 {
@@ -11,7 +11,7 @@ $room_nos=$_POST['room_nos'];
 $amount=$_POST['roomprice'];
 
 $checkroom= "select count(*) from roomdetail where room_type='".$roomtype."' ";
-$check=mysql_query($checkroom) or die (mysql_error($con));
+$check=mysql_query($checkroom) or die (mysql_error($db_server));
 $roomcount=mysql_fetch_array($check);
  $checkcount=$roomcount[0];
 if($checkcount>=10)
@@ -20,7 +20,7 @@ if($checkcount>=10)
 <?php }
 else{
 $s1="UPDATE roomdetail set username='".$username."',checkin_date='".$startdate."',checkout_date='".$enddate."',room_type='".$roomtype."',no_of_room='".$room_nos."',amount='".$amount."' where id='".$id."'";
-mysql_query($s1) or die (mysql_error($con));
+mysql_query($s1) or die (mysql_error($db_server));
 header("location:success.php");
 }
 }
@@ -32,7 +32,7 @@ if(isset($_GET['id']))
 {
 $id=$_GET['id'];
 $getdata= "select * from roomdetail where id='".$id."' ";
-$check1=mysql_query($getdata) or die (mysql_error($con));
+$check1=mysql_query($getdata) or die (mysql_error($db_server));
 $room=mysql_fetch_array($check1);
 }
 ?>

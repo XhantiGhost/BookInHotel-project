@@ -10,5 +10,3 @@ $sql = "CREATE TABLE users (
 )";
 
 ?>
-
-//INSERT INTO `login` (`id`, `username`, `password`) VALUES (NULL, 'admin', 'admin');

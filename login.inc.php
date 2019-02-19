@@ -1,4 +1,6 @@
 <?php
+//this is to check when the submit button is press the information pass is going to be checked against
+//the information in the database
 
 if (isset($_POST['login-submit'])) {
 
@@ -15,7 +17,11 @@ if (isset($_POST['login-submit'])) {
         header("Location: ..//signup.php?error=emptyfields");
         exit();
 
-//this sets up boarders as to which letters can be included in the user name of the signup
+//this process the information the user inputs saves its if correct using query
+
+//by selecting from the database using mysqli
+
+//and verifying it
 
     } else {
         $sql = "SELECT * FROM users WHERE uidUsers=? OR emailUsers=?;";
