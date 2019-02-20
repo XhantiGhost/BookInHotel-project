@@ -14,7 +14,7 @@ if (isset($_POST['login-submit'])) {
 //if so the script must take the user back to the signup site
 
     if(empty($username) || empty($password)) {
-        header("Location: ..//signup.php?error=emptyfields");
+        echo "Fill In Missing Information";
         exit();
 
 //this process the information the user inputs saves its if correct using query

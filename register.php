@@ -22,13 +22,13 @@ $username=$_POST['username'];
 $roomtype=$_POST['field_1'];
 $startdate=$_POST['startdate'];
 $enddate=$_POST['enddate'];
-$room_nos=$_POST['room_nos'];
+$room_no=$_POST['room_nos'];
 $amount=$_POST['roomprice'];
 
 //create querys to check for availability of rooms 
 //and information inputed to the database using sql
 
-$checkroom= "select count(*) from roomdetail where room_type='".$roomtype."' ";
+$checkroom= "select count(*) from hotel where room_type='".$roomtype."' ";
 
 $check=mysql_query($checkroom) or die (mysql_error($db_server));
 

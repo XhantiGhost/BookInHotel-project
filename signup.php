@@ -1,4 +1,5 @@
 <?php
+
 require_once "index.php";
 
 ?>
@@ -6,25 +7,25 @@ require_once "index.php";
 <main>
     <div>
      <section class="section">
-      <h1>Signup</h1>
+      <h1>Sign Up</h1>
       <?php 
-      if(isset($_GET['error'])) {
-          if ($_GET['error'] == "emptyfields") {
+      if(isset($_POST['error'])) {
+          if ($_POST['error'] == "emptyfields") {
               echo '<p class="signerror"> Fill in all fields!</p>';
           }
-          elseif ($_GET['invaildfields']) {
+          elseif ($_POST['invaildfields']) {
               echo '<p class="signerror"> Fill in all fields!</p>';
           } 
-          elseif ($_GET['invaildfields']) {
+          elseif ($_POST['invaildfields']) {
             echo '<p class="signerror"> Fill in all fields!</p>';
         } 
-        elseif ($_GET['usernameTaken&mail']) {
+        elseif ($_POST['usernameTaken&mail']) {
             echo '<p class="signerror"> Already taken!</p>';
         }
 
       }
 
-      elseif ($_GET['signup'] == "success") {
+      else {
           
           echo '<p class="signsuccess">Signup successful!</p>';
       }

@@ -1,22 +1,10 @@
 <?php
 session_start();
-
 ?>
 <?php
-//connect to database
-// include_once 'connect.php';
+// connect to database
 
-
-
-// accept link to the database and the query to create the table
-    // if(mysqli_query($conn, $sql)) {
-    //     echo '<br>Table film created successfully. you may now procced to <a>
-    //     href="add.php">add</a> data to the table';
-    // }else {
-    //     echo "<br> Error create table: " . mysqli_error($conn);
-    // }
-
-    //delete the table manually for testing purposes eg. DROP table publications.film;
+include_once 'booking.php';
 
 ?>
     <!DOCTYPE html>
@@ -51,18 +39,9 @@ session_start();
 	  }
 
 	  ?>
-	  
-	   
-	   </div>
-	  <?php
-	  if (isset($_SESSION['userId']) ) {
-		echo '<p class="login-status"> You are logged in!</p>';
-	  }
-	  else {
-		  echo '<p class="login-status"> You are logged out!</p>';
-	  }
 
-	  ?>
+	  
+	  
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
